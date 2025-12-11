@@ -12,14 +12,10 @@ type Converter func(srcValue reflect.Value, dstType reflect.Type) (reflect.Value
 
 // Options 复制选项
 type Options struct {
-	// 深度复制 - 递归复制指针字段
-	DeepCopy bool
-	// 忽略空字段 - 如果源字段值为零值，跳过复制
-	IgnoreEmpty bool
-	// 转换器 - 用于自定义类型转换
-	Converter Converter
-	// 忽略的字段名
+	Converter    Converter
 	IgnoreFields []string
+	DeepCopy     bool
+	IgnoreEmpty  bool
 }
 
 // 默认选项
@@ -271,7 +267,7 @@ func isNumeric(t reflect.Type) bool {
 // convertNumeric 转换数字类型
 func convertNumeric(srcVal, dstVal reflect.Value) error {
 	var dstValue int64
-	var isFloat = false
+	isFloat := false
 
 	switch srcVal.Kind() {
 	case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:

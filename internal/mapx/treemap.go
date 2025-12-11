@@ -254,7 +254,8 @@ func (tm *TreeMap[K, V]) inOrderTraversalValues(node *TreeNode[K, V], values *[]
 func (tm *TreeMap[K, V]) inOrderTraversalEntries(node *TreeNode[K, V], entries *[]struct {
 	K K
 	V V
-}) {
+},
+) {
 	if node != nil {
 		tm.inOrderTraversalEntries(node.Left, entries)
 		*entries = append(*entries, struct {

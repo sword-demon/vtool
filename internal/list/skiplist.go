@@ -16,9 +16,9 @@ type SkipNode[T cmp.Ordered] struct {
 // SkipList 跳表
 type SkipList[T cmp.Ordered] struct {
 	head     *SkipNode[T]
-	maxLevel int // 当前最大层数
-	length   int // 元素数量
 	rand     *rand.Rand
+	maxLevel int
+	length   int
 }
 
 // NewSkipList 创建新的跳表

@@ -2,6 +2,7 @@ package list
 
 import (
 	"cmp"
+
 	"github.com/sword-demon/vtool/internal/list"
 )
 
