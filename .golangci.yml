@@ -38,7 +38,7 @@ run:
 
 # 输出配置
 output:
-  # 输出格式: colored-line-number|line-number|json|tab|checkstyle|code-climate
+  # 输出格式
   format: colored-line-number
 
   # 打印发现的问题总数
@@ -66,11 +66,6 @@ linters-settings:
     check-type-assertions-hint: ""
     # 报告未使用的全局变量
     check-unchecked: false
-    # 排除函数列表
-    exclude-functions:
-      - io.Copy(*bytes.Buffer)
-      - io.Copy(os.Stdout)
-      - io.Copy(os.Stderr)
 
   # govet: Go 静态分析器
   govet:
@@ -90,10 +85,6 @@ linters-settings:
     # 禁用检查
     disable:
       - printf
-
-  # golint: 代码风格检查（已废弃，使用 revive）
-  # golint:
-  #   min-confidence: 0.8
 
   # revive: golint 的替代品
   revive:
@@ -161,10 +152,6 @@ linters-settings:
     # 本地包前缀
     local-prefixes: "github.com/sword-demon/vtool"
 
-  # maligned: 结构体字段对齐（已废弃）
-  # maligned:
-  #   suggest-new: true
-
   # misspell: 拼写检查
   misspell:
     locale: US
@@ -198,118 +185,6 @@ linters-settings:
       - github.com/sirupsen/logrus
     packages-with-error-message:
       - github.com/sirupsen/logrus: "使用标准库 log 或 go.uber.org/zap"
-    # 额外的规则
-    rules:
-      # 防止使用 fmt.Printf 在性能敏感代码中
-      - name: fmt-printf
-        rules:
-          - pkg: fmt
-            funcs:
-              - Printf
-              - Sprintf
-              - Fprintf
-              - Print
-              - Sprint
-              - Fprint
-            msg: "使用结构化日志或专门的格式化函数"
-
-  # # rowserrcheck: 检查错误是否被处理
-  # rowserrcheck:
-  #   # 排除的包
-  #   packages:
-  #     - github.com/jmoiron/sqlx
-
-  # # exhaustivestruct: 检查结构体是否完全初始化
-  # exhaustivestruct:
-  #   struct-patterns:
-  #     - '*.Test'
-
-  # # funlen: 检查函数长度
-  # funlen:
-  #   lines: 100
-  #   statements: 50
-
-  # # gochecknoinits: 检查是否使用了 init 函数
-  # gochecknoinits:
-  #   # 允许的包
-  #   allowed-init-functions:
-  #     - TestMain
-  #     - TestMainWithExitCode
-
-  # # gocognit: 认知复杂度检查
-  # gocognit:
-  #   # 最小复杂度
-  #   min-complexity: 30
-
-  # # godox: TODO/FIXME 注释检查
-  # godox:
-  #   # 关键词
-  #   keywords:
-  #     - FIXME
-  #     - OPTIMIZE
-  #     - HACK
-  #   # 严格模式
-  #   strict: false
-
-  # # gofumpt: 额外的格式化规则
-  # gofumpt:
-  #   lang-version: "1.23"
-  #   # 额外规则
-  #   extra-rules: true
-
-  # # errorlint: 错误处理检查
-  # errorlint:
-  #   # 允许使用 errors.New 和 fmt.Errorf
-  #   errorf: true
-
-  # # exhaustive: switch 语句完整性检查
-  # exhaustive:
-  #   default-signifies-exhaustive: false
-
-  # # forbidigo: 禁止使用某些表达式
-  # forbidigo:
-  #   forbid:
-  #     - ^print.*$
-  #     - 'fmt\.Print.*'
-
-  # # godot: 注释结尾点号检查
-  # godot:
-  #   scope: toplevel
-  #   check-all: false
-
-  # # goerr113: Go 错误处理检查
-  # goerr113:
-  #   # 错误表达式正则
-  #   error-expression: ^errors\.New\(
-  #   # 检查级别
-  #   strict: true
-
-  # # interfacer: 接口建议
-  # interfacer:
-  #   enabled: false
-
-  # # lll: 行长度检查
-  # lll:
-  #   line-length: 120
-
-  # # nakedret: 裸返回检查
-  # nakedret:
-  #   max-func-lines: 30
-
-  # # prealloc: 切片预分配建议
-  # prealloc:
-  #   for-loops: true
-  #   range-loops: true
-  #   important: true
-
-  # # testpackage: 测试包结构检查
-  # testpackage:
-  #   skip-regexp: (export|test)_helper\.go$
-
-  # # wsl: 空白空间规则
-  # wsl:
-  #   force-err-whitespace: true
-  #   force-split语句: true
 
 # Linters 配置
 linters:
@@ -378,19 +253,6 @@ issues:
         - stylecheck
         - unparam
         - whitespace
-      # 排除原因
-      reasons:
-        errcheck: "测试中忽略错误检查"
-        funlen: "测试函数允许更长"
-        gocyclo: "测试中允许复杂循环"
-        gomnd: "测试中允许魔数"
-        govet: "测试中允许 shadowing"
-        lll: "测试中允许长行"
-        misspell: "测试中允许拼写错误"
-        revive: "测试中允许导出私有变量"
-        stylecheck: "测试中允许某些风格问题"
-        unparam: "测试中允许未使用参数"
-        whitespace: "测试中允许空白空间问题"
 
     # Examples 文件
     - path: examples/
@@ -399,11 +261,6 @@ issues:
         - lll
         - funlen
         - revive
-      reasons:
-        gomnd: "示例中允许魔数"
-        lll: "示例中允许长行"
-        funlen: "示例中允许长函数"
-        revive: "示例中允许某些规则"
 
     # internal 包（私有代码可以放宽要求）
     - path: ^internal/
@@ -411,10 +268,6 @@ issues:
         - revive
         - stylecheck
         - gocritic
-      reasons:
-        revive: "internal 包允许未导出的导出函数"
-        stylecheck: "internal 包放宽风格检查"
-        gocritic: "internal 包允许某些诊断"
 
     # 忽略特定问题
     - linters:
@@ -433,13 +286,6 @@ issues:
     - "comment on exported"
     # 忽略变量赋值但未使用
     - "ineffassign"
-
-  # 报告中包含问题 ID
-  include:
-    - EXC0012  # 注释导出符号
-    - EXC0013  # 注释私有符号
-    - EXC0014  # 注释导出符号的注释
-    - EXC0015  # 注释私有符号的注释
 
   # 排除路径列表
   exclude-paths:
@@ -467,11 +313,3 @@ issues:
 performance:
   # 如果可能，预分析输入
   pre-analyze-go-version: "1.23"
-
-# 服务端支持
-service:
-  # golangci-lint 配置
-  config: ""
-
-# 版本信息
-version: v1.60.0
