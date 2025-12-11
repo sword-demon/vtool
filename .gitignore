@@ -1,0 +1,114 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+# Test binary, built with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+*.cover
+coverage.txt
+
+# Dependency directories (remove the comment below to include it)
+# vendor/
+
+# Go workspace file
+go.work
+
+# Build directory
+/build/
+/dist/
+
+# IDE directories and files
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+
+# JetBrains IDEs
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+*.elc
+auto-save-list
+tramp
+.\#*
+
+# Vim
+*.swp
+*.spy
+
+# Logs
+*.log
+
+# Temporary folders
+tmp/
+temp/
+.tmp/
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+.fseventsd
+
+# Environment variables
+.env
+.envrc
+
+# Local configuration
+config.local.*
+*.local
+
+# Test artifacts
+*.test
+*.prof
+
+# Go land
+# Compiled Object files, Static and Dynamic libs (Shared Objects)
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dylib
+
+# Executables
+*.app
+*.ipa
+*.ipa.dSYM.zip
+*.ipa.dSYM
+
+# Archive files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Performance and profiling
+*.prof
+*.pprof
