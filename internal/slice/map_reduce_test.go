@@ -64,9 +64,9 @@ func TestReduce(t *testing.T) {
 			expected: 24,
 		},
 		{
-			name:     "找最大值",
-			src:      []int{3, 7, 2, 9, 1},
-			reducer:  func(acc, val int) int {
+			name: "找最大值",
+			src:  []int{3, 7, 2, 9, 1},
+			reducer: func(acc, val int) int {
 				if val > acc {
 					return val
 				}
@@ -94,22 +94,22 @@ func TestReduce(t *testing.T) {
 
 func TestFilter(t *testing.T) {
 	testCases := []struct {
-		name     string
-		src      []int
+		name      string
+		src       []int
 		predicate func(int) bool
-		expected []int
+		expected  []int
 	}{
 		{
-			name:     "过滤出偶数",
-			src:      []int{1, 2, 3, 4, 5, 6},
+			name:      "过滤出偶数",
+			src:       []int{1, 2, 3, 4, 5, 6},
 			predicate: func(i int) bool { return i%2 == 0 },
-			expected: []int{2, 4, 6},
+			expected:  []int{2, 4, 6},
 		},
 		{
-			name:     "过滤出大于5的数",
-			src:      []int{1, 6, 3, 8, 2, 9},
+			name:      "过滤出大于5的数",
+			src:       []int{1, 6, 3, 8, 2, 9},
 			predicate: func(i int) bool { return i > 5 },
-			expected: []int{6, 8, 9},
+			expected:  []int{6, 8, 9},
 		},
 	}
 
@@ -123,16 +123,16 @@ func TestFilter(t *testing.T) {
 
 func TestFilterString(t *testing.T) {
 	testCases := []struct {
-		name     string
-		src      []string
+		name      string
+		src       []string
 		predicate func(string) bool
-		expected []string
+		expected  []string
 	}{
 		{
-			name:     "过滤出字符串长度大于3的",
-			src:      []string{"a", "ab", "abc", "abcd", "abcde"},
+			name:      "过滤出字符串长度大于3的",
+			src:       []string{"a", "ab", "abc", "abcd", "abcde"},
 			predicate: func(s string) bool { return len(s) > 3 },
-			expected: []string{"abcd", "abcde"},
+			expected:  []string{"abcd", "abcde"},
 		},
 	}
 

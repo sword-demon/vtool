@@ -24,9 +24,9 @@ type Options struct {
 
 // 默认选项
 var defaultOptions = Options{
-	DeepCopy:   false,
+	DeepCopy:    false,
 	IgnoreEmpty: false,
-	Converter:  nil,
+	Converter:   nil,
 }
 
 // Copy 复制结构体
@@ -55,7 +55,7 @@ func Copy(src, dst interface{}, opts ...Options) error {
 // CopyWithoutNil 复制结构体，跳过nil指针
 func CopyWithoutNil(src, dst interface{}) error {
 	return Copy(src, dst, Options{
-		DeepCopy:   true,
+		DeepCopy:    true,
 		IgnoreEmpty: true,
 	})
 }

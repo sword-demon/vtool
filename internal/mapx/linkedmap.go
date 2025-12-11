@@ -10,18 +10,18 @@ type LinkedNode[K comparable, V any] struct {
 
 // LinkedMap 保持插入顺序的映射
 type LinkedMap[K comparable, V any] struct {
-	items map[K]*LinkedNode[K, V]
-	head  *LinkedNode[K, V]
-	tail  *LinkedNode[K, V]
+	items  map[K]*LinkedNode[K, V]
+	head   *LinkedNode[K, V]
+	tail   *LinkedNode[K, V]
 	length int
 }
 
 // NewLinkedMap 创建新的LinkedMap
 func NewLinkedMap[K comparable, V any]() *LinkedMap[K, V] {
 	return &LinkedMap[K, V]{
-		items: make(map[K]*LinkedNode[K, V]),
-		head:  nil,
-		tail:  nil,
+		items:  make(map[K]*LinkedNode[K, V]),
+		head:   nil,
+		tail:   nil,
 		length: 0,
 	}
 }

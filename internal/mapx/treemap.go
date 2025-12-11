@@ -7,12 +7,12 @@ import (
 
 // TreeNode 树节点
 type TreeNode[K cmp.Ordered, V any] struct {
-	Key       K
-	Value     V
-	Left      *TreeNode[K, V]
-	Right     *TreeNode[K, V]
-	Parent    *TreeNode[K, V]
-	Color     bool // true = Red, false = Black
+	Key    K
+	Value  V
+	Left   *TreeNode[K, V]
+	Right  *TreeNode[K, V]
+	Parent *TreeNode[K, V]
+	Color  bool // true = Red, false = Black
 }
 
 // TreeMap 有序映射，基于二叉搜索树
@@ -24,7 +24,7 @@ type TreeMap[K cmp.Ordered, V any] struct {
 // NewTreeMap 创建新的TreeMap
 func NewTreeMap[K cmp.Ordered, V any]() *TreeMap[K, V] {
 	return &TreeMap[K, V]{
-		root: nil,
+		root:   nil,
 		length: 0,
 	}
 }

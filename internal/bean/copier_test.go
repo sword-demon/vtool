@@ -89,9 +89,9 @@ func TestCopy(t *testing.T) {
 
 	t.Run("不同类型转换", func(t *testing.T) {
 		src := &NumericSource{
-			IntValue:   100,
-			Int64Value: 999,
-			FloatValue: 3.14,
+			IntValue:    100,
+			Int64Value:  999,
+			FloatValue:  3.14,
 			StringValue: "test",
 		}
 		dst := &NumericDest{}
@@ -118,7 +118,7 @@ func TestCopy(t *testing.T) {
 		err := Copy(src, dst, Options{IgnoreEmpty: true})
 		assert.NoError(t, err)
 		assert.Equal(t, "John", dst.Name)
-		assert.Equal(t, 50, dst.Age)     // 保持不变
+		assert.Equal(t, 50, dst.Age) // 保持不变
 		assert.Equal(t, "john@example.com", dst.Email)
 	})
 
@@ -230,7 +230,7 @@ func TestCopy(t *testing.T) {
 		err := Copy(src, dst, Options{IgnoreFields: []string{"Age"}})
 		assert.NoError(t, err)
 		assert.Equal(t, "John", dst.Name)
-		assert.Equal(t, 50, dst.Age)     // 保持不变
+		assert.Equal(t, 50, dst.Age) // 保持不变
 		assert.Equal(t, "john@example.com", dst.Email)
 	})
 }
